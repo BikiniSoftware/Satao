@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satao.Tests", "Satao.Tests\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{CE677A8E-EBEE-4349-8952-0BF08B9D9122}"
 	ProjectSection(SolutionItems) = preProject
-		Nuget\Satao.1.0.0.nuspec = Nuget\Satao.1.0.0.nuspec
+		Nuget\Satao.nuspec = Nuget\Satao.nuspec
 	EndProjectSection
 EndProject
 Global
