@@ -1,29 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package>
-  <metadata>
-    <id>Satao</id>
-    <version>1.0.0</version>
-    <authors>Bikini Software</authors>
-    <owners>Bikini Software</owners>
-    <projectUrl>https://github.com/BikiniSoftware/Satao</projectUrl>
-    <iconUrl>https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Satao%2C_an_African_Elephant_killed_by_poachers.jpeg/300px-Satao%2C_an_African_Elephant_killed_by_poachers.jpeg</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Simple cache provider to replace MemoryCache.</description>
-    <releaseNotes>Initial release.</releaseNotes>
-    <copyright>Copyright 2016</copyright>
-    <tags>cache netstandard</tags>
-    <dependencies>      
-      <group targetFramework="netstandard1.0">
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="System.Collections" version="4.0.11" />
-        <dependency id="System.Collections.Concurrent" version="4.0.12" />
-        <dependency id="System.Linq" version="4.1.0" />
-        <dependency id="System.Reactive.Core" version="3.0.0" />
-        <dependency id="System.Reactive.Linq" version="3.0.0" />
-        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Threading" version="4.0.11" />
-      </group>
-    </dependencies>
-  </metadata>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Satao</id>
+        <version>1.0.0</version>
+        <authors>Bikini Software</authors>
+        <owners>Bikini Software</owners>
+        <projectUrl>https://github.com/BikiniSoftware/Satao</projectUrl>
+        <iconUrl>https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Satao%2C_an_African_Elephant_killed_by_poachers.jpeg/300px-Satao%2C_an_African_Elephant_killed_by_poachers.jpeg</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Simple cache provider to replace MemoryCache.</description>
+        <releaseNotes>Initial release.</releaseNotes>
+        <copyright>Copyright 2016</copyright>
+        <tags>cache netstandard</tags>
+        <dependencies>
+            <group targetFramework=".NETStandard1.0">
+                <dependency id="Newtonsoft.Json" version="9.0.1" />
+                <dependency id="System.Collections" version="4.0.11" />
+                <dependency id="System.Collections.Concurrent" version="4.0.12" />
+                <dependency id="System.Linq" version="4.1.0" />
+                <dependency id="System.Reactive.Core" version="3.0.0" />
+                <dependency id="System.Reactive.Linq" version="3.0.0" />
+                <dependency id="System.Resources.ResourceManager" version="4.0.1" />
+                <dependency id="System.Runtime" version="4.1.0" />
+                <dependency id="System.Threading" version="4.0.11" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Satao\bin\Release\Satao.dll" target="lib\netstandard1.4\Satao.dll" />
+        <file src="..\Satao\bin\Release\Satao.pdb" target="lib\netstandard1.4\Satao.pdb" />
+    </files>
 </package>
