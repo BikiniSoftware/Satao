@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satao", "Satao\Satao.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Satao.Tests", "Satao.Tests\Satao.Tests.csproj", "{BB611E1D-D787-4FA0-8633-D59B0BC93FED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{CE677A8E-EBEE-4349-8952-0BF08B9D9122}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget\Satao.1.0.0.nuspec = Nuget\Satao.1.0.0.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

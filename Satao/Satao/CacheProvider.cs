@@ -169,7 +169,7 @@ namespace Satao
         private void Add<TKey, TValue>(TKey key, TValue value, TimeSpan timeSpan, CacheItemPriority priority, bool isSliding) where TValue : class
         {
             // add to cache
-            _cache.TryAdd(key, new CacheItem(value, priority, ((isSliding) ? timeSpan : (TimeSpan?)null)));
+            _cache.TryAdd(key, new CacheItem(value?.CloneUsingJson(), priority, ((isSliding) ? timeSpan : (TimeSpan?)null)));
 
             // keep sliding track
             if (isSliding)
@@ -215,7 +215,7 @@ namespace Satao
 
         #endregion
 
-       
+
     }
 }
 

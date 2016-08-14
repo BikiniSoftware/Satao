@@ -42,6 +42,7 @@
     <Compile Include="CacheItem.cs" />
     <Compile Include="CacheItemPriority.cs" />
     <Compile Include="CacheProvider.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="ICacheProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlidingDetails.cs" />

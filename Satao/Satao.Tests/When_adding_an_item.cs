@@ -33,6 +33,19 @@ namespace Satao.Tests
         }
 
         [TestMethod]
+        public void Should_retrieve_the_item_after_changin_the_source()
+        {
+            var dummy = new DummyClass() { Id = 1, Name = "Bob" };
+            _provider.Add(dummy.Id, dummy, DateTime.Now.AddMinutes(1));
+
+            dummy.Name = "Toto";
+            var cachedValue = _provider.Get<int, DummyClass>(1);
+
+            cachedValue.Id.Should().Be(1);
+            cachedValue.Name.Should().Be("Bob");
+        }
+
+        [TestMethod]
         public void That_already_exists_should_retrieve_the_item()
         {
             var dummy = new DummyClass() { Id = 0, Name = "Bob" };
@@ -44,5 +57,6 @@ namespace Satao.Tests
             dummy.Id.Should().Be(cachedValue.Id);
             dummy.Name.Should().Be(cachedValue.Name);
         }
+      
     }
 }
