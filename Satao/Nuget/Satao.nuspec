@@ -14,13 +14,11 @@
     <tags>cache netstandard</tags>
     <dependencies>
       <group targetFramework="netstandard1.0">
-        <dependency id="AutoMapper" version="5.1.1" />
         <dependency id="System.Collections" version="4.0.11" />
         <dependency id="System.Collections.Concurrent" version="4.0.12" />
         <dependency id="System.Linq" version="4.1.0" />
         <dependency id="System.Reactive.Core" version="3.0.0" />
         <dependency id="System.Reactive.Linq" version="3.0.0" />
-        <dependency id="System.Reflection" version="4.1.0" />
         <dependency id="System.Resources.ResourceManager" version="4.0.1" />
         <dependency id="System.Runtime" version="4.1.0" />
         <dependency id="System.Threading" version="4.0.11" />

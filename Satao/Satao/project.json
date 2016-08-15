@@ -1,7 +1,6 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "AutoMapper": "5.1.1",
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
     "NETStandard.Library": "1.6.0",
     "NuSpec.ReferenceGenerator": "2.0.0-beta-bld14",

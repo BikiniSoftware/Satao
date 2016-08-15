@@ -77,20 +77,7 @@ namespace Satao.Tests
 
             cachedValue.Should().Be(name);
         }
-
-        [TestMethod]
-        public void Should_have_deep_clone_the_item()
-        {
-            var dummy = new DummyClass() { Name = "Bob" };
-            _provider.Add(dummy.Id.ToString(), dummy, DateTime.Now.AddMinutes(1));
-
-            dummy.Name = "Toto";
-            var cachedValue = _provider.Get<string, DummyClass>(dummy.Id.ToString());
-
-            cachedValue.Id.Should().Be(dummy.Id);
-            cachedValue.Name.Should().Be("Bob");
-        }
-
+        
         [TestMethod]
         public void That_already_exists_should_retrieve_the_item()
         {
