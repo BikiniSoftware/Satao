@@ -1,0 +1,6 @@
+{
+  "name": "Satao - Simple Caching Library",
+  "tagline": "A simple cache provider to replace MemoryCache in .netstandard.",
+  "body": "### Welcome to Satao Pages.\r\n\r\nThis library tries to replace the missing MemoryCache in PCL.\r\n\r\n### Authors and Contributors\r\n@fredthevenon\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
