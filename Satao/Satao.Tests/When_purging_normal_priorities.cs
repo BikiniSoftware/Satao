@@ -12,7 +12,7 @@ namespace Satao.Tests
     [TestClass]
     public class When_purging_normal_priorities
     {
-        private CacheProvider _provider;
+        private ICacheProvider _provider;
 
         [TestInitialize]
         public void SetUp()
@@ -20,12 +20,12 @@ namespace Satao.Tests
             _provider = new CacheProvider();
             for (int i = 0; i < 100; i++)
             {
-                _provider.Add(i, new DummyClass() { Id = i, Name = "Bobby" }, TimeSpan.FromSeconds(5), CacheItemPriority.Normal);
+                _provider.Add(i, new DummyClass() { Name = "Bobby" }, TimeSpan.FromSeconds(5), CacheItemPriority.Normal);
             }
 
             for (int i = 100; i < 150; i++)
             {
-                _provider.Add(i, new DummyClass() { Id = i, Name = "Vanessa" }, TimeSpan.FromSeconds(5), CacheItemPriority.High);
+                _provider.Add(i, new DummyClass() { Name = "Vanessa" }, TimeSpan.FromSeconds(5), CacheItemPriority.High);
             }
         }
 
@@ -33,11 +33,7 @@ namespace Satao.Tests
         public void Should_only_get_hight_priority()
         {
             _provider.PurgeNormalPriorities();
-            foreach (int key in _provider.Keys())
-            {
-                var cachedValue = _provider.Get<int, DummyClass>(key);
-                cachedValue.Id.Should().BeGreaterOrEqualTo(100).And.BeLessThan(150);
-            }
+            _provider.Keys().Count().Should().Be(50);
         }
     }
 }

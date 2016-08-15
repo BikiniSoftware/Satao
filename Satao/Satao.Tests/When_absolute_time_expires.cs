@@ -12,7 +12,7 @@ namespace Satao.Tests
     [TestClass]
     public class When_absolute_time_expires
     {
-        private CacheProvider _provider;
+        private ICacheProvider _provider;
 
         [TestInitialize]
         public void SetUp()
@@ -23,12 +23,12 @@ namespace Satao.Tests
         [TestMethod]
         public async Task Should_be_null()
         {
-            var dummy = new DummyClass() { Id = 0, Name = "Bob" };
+            var dummy = new DummyClass() {  Name = "Bob" };
             _provider.Add(dummy.Id, dummy, DateTime.Now.AddSeconds(5));
 
             await Task.Delay(TimeSpan.FromSeconds(10)); // To simultate expiry.
 
-            var cachedValue = _provider.Get<int, DummyClass>(dummy.Id);
+            var cachedValue = _provider.Get<Guid, DummyClass>(dummy.Id);
             cachedValue.Should().BeNull("Absolute expiry expires");
         }
     }

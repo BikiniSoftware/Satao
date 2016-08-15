@@ -12,7 +12,7 @@ namespace Satao.Tests
     [TestClass]
     public class When_using_sliding_expiry
     {
-        private CacheProvider _provider;
+        private ICacheProvider _provider;
 
         [TestInitialize]
         public void SetUp()
@@ -23,29 +23,29 @@ namespace Satao.Tests
         [TestMethod]
         public async Task Should_retrieve_null_when_expires()
         {
-            var dummy = new DummyClass() { Id = 0, Name = "Bob" };
+            var dummy = new DummyClass() { Name = "Bob" };
             _provider.Add(dummy.Id, dummy, TimeSpan.FromSeconds(5));
 
             await Task.Delay(TimeSpan.FromSeconds(10)); // To simultate expiry.
 
-            var cachedValue = _provider.Get<int, DummyClass>(dummy.Id);
+            var cachedValue = _provider.Get<Guid, DummyClass>(dummy.Id);
             cachedValue.Should().BeNull("Relative expiry expires");
         }
 
         [TestMethod]
         public async Task Should_retrieve_the_item_after_getting_it()
         {
-            var dummy = new DummyClass() { Id = 2, Name = "Bob" };
+            var dummy = new DummyClass() { Name = "Bob" };
             _provider.Add(dummy.Id, dummy, TimeSpan.FromSeconds(5));
             
             await Task.Delay(TimeSpan.FromSeconds(3)); // To simultate expiry.
 
-            var cachedValue = _provider.Get<int, DummyClass>(dummy.Id);
+            var cachedValue = _provider.Get<Guid, DummyClass>(dummy.Id);
             cachedValue.Id.Should().Be(dummy.Id);
 
             await Task.Delay(TimeSpan.FromSeconds(6)); // To simultate expiry.
 
-            var cachedValue2 = _provider.Get<int, DummyClass>(dummy.Id);
+            var cachedValue2 = _provider.Get<Guid, DummyClass>(dummy.Id);
             cachedValue2.Should().BeNull("Relative expiry expires");
         }
     }

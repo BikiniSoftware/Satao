@@ -8,6 +8,9 @@ namespace Satao
 {
     public class CacheProvider : ICacheProvider
     {
+        public static CacheProvider Default { get; } = new CacheProvider();
+
+
         private readonly ConcurrentDictionary<object, CacheItem> _cache = new ConcurrentDictionary<object, CacheItem>();
         private readonly ConcurrentDictionary<object, SlidingDetails> _slidingTime = new ConcurrentDictionary<object, SlidingDetails>();
 
@@ -24,7 +27,7 @@ namespace Satao
         /// <param name="value">The value.</param>
         /// <param name="slidingExpiry">The sliding time when the key value pair should expire and be purged from the cache.</param>
         /// <param name="priority">Normal priority will be purged on low memory warning.</param>
-        public void Add<TKey, TValue>(TKey key, TValue value, TimeSpan slidingExpiry, CacheItemPriority priority = CacheItemPriority.Normal) where TValue : class
+        public void Add<TKey, TValue>(TKey key, TValue value, TimeSpan slidingExpiry, CacheItemPriority priority = CacheItemPriority.Normal)
         {
             Add(key, value, slidingExpiry, priority, true);
         }
@@ -38,7 +41,7 @@ namespace Satao
         /// <param name="value">The value.</param>
         /// <param name="absoluteExpiry">The absolute date time when the cache should expire and be purged the value.</param>
         /// <param name="priority">Normal priority will be purged on low memory warning.</param>
-        public void Add<TKey, TValue>(TKey key, TValue value, DateTime absoluteExpiry, CacheItemPriority priority = CacheItemPriority.Normal) where TValue : class
+        public void Add<TKey, TValue>(TKey key, TValue value, DateTime absoluteExpiry, CacheItemPriority priority = CacheItemPriority.Normal)
         {
             if (absoluteExpiry < DateTime.Now)
             {
@@ -58,7 +61,7 @@ namespace Satao
         /// <returns>
         /// If the key exists in the cache then the value is returned, if the key does not exist then null is returned.
         /// </returns>
-        public TValue Get<TKey, TValue>(TKey key) where TValue : class
+        public TValue Get<TKey, TValue>(TKey key)
         {
             try
             {
@@ -71,7 +74,7 @@ namespace Satao
             }
             catch (Exception)
             {
-                return null;
+                return default(TValue);
             }
         }
 
@@ -166,10 +169,10 @@ namespace Satao
 
         #region Private class helper
 
-        private void Add<TKey, TValue>(TKey key, TValue value, TimeSpan timeSpan, CacheItemPriority priority, bool isSliding) where TValue : class
+        private void Add<TKey, TValue>(TKey key, TValue value, TimeSpan timeSpan, CacheItemPriority priority, bool isSliding)
         {
             // add to cache
-            _cache.TryAdd(key, new CacheItem(value?.CloneUsingJson(), priority, ((isSliding) ? timeSpan : (TimeSpan?)null)));
+            _cache.TryAdd(key, new CacheItem(value.DeepClone(), priority, ((isSliding) ? timeSpan : (TimeSpan?)null)));
 
             // keep sliding track
             if (isSliding)
